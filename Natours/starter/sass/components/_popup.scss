@@ -10,6 +10,12 @@
     visibility: hidden;
     transition: all .3s;
 
+    @supports ( -webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-color: rgba($color-black, .4);
+    }
+
     &__content {
         @include absCenter;
 
@@ -26,6 +32,10 @@
     &__left {
         width: 33.333333%;
         display: table-cell;
+
+        @include respond(tab-land) {
+            display: none;
+        }
     }
 
     &__right {
@@ -33,11 +43,26 @@
         display: table-cell;
         vertical-align: middle;
         padding: 3rem 5rem;
+
+        .popup__img {
+            display: none;
+
+            @include respond(tab-land) {
+                display: inline;
+                top: 0;
+                left: 0;
+                z-index: -1000;
+                opacity: .3;
+                position: absolute;
+            }
+        }
     }
 
     &__img {
         display: block;
         width: 100%;
+
+       
     }
 
     &__text {
@@ -74,6 +99,12 @@
 
         &:hover {
             color: $color-primary;
+        }
+    }
+
+    @include respond(tab-land){
+        .popup2 {
+            display: none;
         }
     }
 }
