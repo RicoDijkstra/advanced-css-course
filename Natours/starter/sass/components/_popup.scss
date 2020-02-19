@@ -55,6 +55,11 @@
                 opacity: .3;
                 position: absolute;
             }
+            @include respond(phone) {
+                height: 120%;
+                width: auto;
+                left: -22rem;
+            }
         }
     }
 
